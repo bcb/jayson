@@ -27,13 +27,13 @@ describe('Jayson.Server', function() {
       });
     });
 
-    describe('serverError', function() {
+    describe('internalError', function() {
       it('should not require params', function() {
-        Server.serverError().should.eql({code: -32603, message: 'Internal error'});
+        Server.internalError().should.eql({code: -32603, message: 'Internal error'});
       });
 
       it('should take a data param for extra information', function() {
-        Server.serverError('foo').should.eql({code: -32603, message: 'Internal error', data: 'foo'});
+        Server.internalError('foo').should.eql({code: -32603, message: 'Internal error', data: 'foo'});
       });
     });
 
