@@ -19,11 +19,11 @@ describe('Jayson.Server', function() {
   describe('easy error raising functions', function() {
     describe('invalidParams', function() {
       it('should not require params', function() {
-        Server.invalidParams().should.eql({code: -32602, message: 'Invalid method parameter(s)'});
+        Server.invalidParams().should.eql({code: -32602, message: 'Invalid params'});
       });
 
       it('should take a data param for extra information', function() {
-        Server.invalidParams('foo').should.eql({code: -32602, message: 'Invalid method parameter(s)', data: 'foo'});
+        Server.invalidParams('foo').should.eql({code: -32602, message: 'Invalid params', data: 'foo'});
       });
     });
 
