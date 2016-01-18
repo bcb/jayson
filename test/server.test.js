@@ -16,6 +16,29 @@ describe('Jayson.Server', function() {
     Server().should.be.instanceof(jayson.Server);
   });
 
+  describe('easy error raising functions', function() {
+    describe('invalidParams', function() {
+      it('should not require params', function() {
+        Server.invalidParams().should.eql({code: -32602, message: 'Invalid method parameter(s)'});
+      });
+
+      it('should take a data param for extra information', function() {
+        Server.invalidParams('foo').should.eql({code: -32602, message: 'Invalid method parameter(s)', data: 'foo'});
+      });
+    });
+
+    describe('serverError', function() {
+      it('should not require params', function() {
+        Server.serverError().should.eql({code: -32603, message: 'Internal error'});
+      });
+
+      it('should take a data param for extra information', function() {
+        Server.serverError('foo').should.eql({code: -32603, message: 'Internal error', data: 'foo'});
+      });
+    });
+
+  });
+
   describe('instance', function() {
 
     var server = null;
